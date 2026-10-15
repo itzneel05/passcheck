@@ -67,6 +67,15 @@ pip install -e ".[dev]"
 pytest
 ```
 
+## Codespaces
+
+This repository ships a [Dev Container](.devcontainer/devcontainer.json), so you
+can develop entirely in the cloud with zero local setup:
+
+1. Click **Code → Codespaces → Create codespace on master**.
+2. Wait for the container to build — dependencies install automatically.
+3. Run `pytest -q` in the built-in terminal; all tests should pass.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
