@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import getpass
+import json
 import sys
 
 from .checker import check_password
@@ -38,6 +39,11 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="Disable coloured output.",
     )
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Print the report as a JSON object.",
+    )
     args = parser.parse_args(argv)
 
     use_color = not args.no_color and sys.stdout.isatty()
@@ -52,6 +58,10 @@ def main(argv: list[str] | None = None) -> int:
             return 1
 
     report = check_password(password)
+
+    if args.json:
+        print(json.dumps(report.as_dict()))
+        return 0
 
     print(f"Strength : {_paint(report.label, report.score, use_color)}")
     print(f"Score    : {_paint(_bar(report.score), report.score, use_color)} {report.score}/4")

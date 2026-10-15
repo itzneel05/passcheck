@@ -35,6 +35,9 @@ passcheck
 
 # Plain output for scripts / CI
 passcheck --no-color "correct-horse-battery-staple-9"
+
+# JSON output for scripts
+passcheck --json "correct-horse-battery-staple-9"
 ```
 
 ### Example output
